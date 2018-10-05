@@ -63,7 +63,7 @@
                     android:layout_marginTop="15sp"
                     android:layout_toRightOf="@+id/imgUser"
                     android:fontFamily="sans-serif-light"
-                    android:text="Student, Mumbai"
+                    android:text="Teacher, Mumbai"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />

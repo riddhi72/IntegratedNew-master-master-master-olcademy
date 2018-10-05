@@ -1,6 +1,5 @@
 package me.riddhi.gada.olcademy;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,9 +16,6 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -83,13 +79,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.action_home:
-                              //  selectedFragment = Homepage.newInstance();
-                                CourseFragment fragment1=new CourseFragment();
-                                LoadFragment(fragment1);
+                                selectedFragment = CourseFragment.newInstance();
+                                //CourseFragment fragment1=new CourseFragment();
+                                //LoadFragment(fragment1);
                                 break;
-//                                Intent renuka=new Intent(MainActivity.this,renuka_main.class);
-//                                startActivity(renuka);
-
+                                //Intent renuka=new Intent(MainActivity.this,renuka_main.class);
+                                //   startActivity(renuka);
                             case R.id.action_notifs:
                                 selectedFragment = Notifications.newInstance();
                                 break;
@@ -100,7 +95,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                 selectedFragment = Forum.newInstance();
                                 break;
                             case R.id.action_profile:
+                                //check if logged-in user is teacher or student. display profile accordingly.
                                 selectedFragment = Teacher.newInstance(email_id, email_name, googlepic);
+                                //selectedFragment = Student.newInstance(email_id, email_name, googlepic);
                                 break;
                         }
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

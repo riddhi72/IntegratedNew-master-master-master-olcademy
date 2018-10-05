@@ -2,12 +2,14 @@ package me.riddhi.gada.olcademy.fragments;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +21,12 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
 import me.riddhi.gada.olcademy.About;
+import me.riddhi.gada.olcademy.MainActivity;
 import me.riddhi.gada.olcademy.R;
 import me.riddhi.gada.olcademy.Settings;
 
@@ -30,20 +34,45 @@ public class Student extends Fragment {
     private float[] yData = {25.3f, 10.6f, 66.76f, 44.32f, 46.01f, 16.89f, 23.9f};
     private String[] xData = {"Python", "Data Science", "Java", "Web Dev", "Android", "CSS", "XML"};
     PieChart pieChart;
-    TextView settings, signout, about;
-    public static Student newInstance() {
+    TextView settings, signout, out, about;
+    ImageView userImg;
+    static TextView uName, uDesc;
+    private static final int RC_SIGN_IN = 007;
+    private GoogleApiClient mGoogleApiClient;
+    // boolean doubleBackToExitPressedOnce = false;
+    static Uri gpic;
+    static String email_name, email_id;
+    //String gname=getArguments().getString("googlename");
+    //String displayname=gname.toString();
+
+    public static Student newInstance(String eid, String ename, Uri googlepic) {
+        gpic = googlepic;
+        email_name = ename;
+        email_id = eid;
         Student fragment = new Student();
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          final View view = inflater.inflate(R.layout.frag_student, container, false);
 
+        uName= (TextView) view.findViewById(R.id.UserName);
+        uName.setText(email_name);
+        uDesc = (TextView) view.findViewById(R.id.userDesc);
+        uDesc.setText(email_id);
+        userImg = (ImageView) view.findViewById(R.id.userImg);
+        userImg.setImageURI(gpic);
+        out=view.findViewById(R.id.logout);
+        out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                MainActivity.signout();
+                getActivity().finish();
+            }
+        });
 
 
          pieChart = (PieChart) view.findViewById(R.id.pieChart);
@@ -91,13 +120,13 @@ public class Student extends Fragment {
                  startActivity(new Intent(getContext(), Settings.class));
              }
          });
-        about = (TextView) view.findViewById(R.id.txtAbout);
-        about.setOnClickListener(new View.OnClickListener() {
+         about = (TextView) view.findViewById(R.id.txtAbout);
+         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), About.class));
             }
-        });
+         });
 
          return view;
     }
@@ -138,6 +167,9 @@ public class Student extends Fragment {
 
     }
 
+    public static void setDetails(String value){
 
+        uName.setText(value);
+    }
 
 }
