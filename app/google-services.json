@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "612059958009",
+    "firebase_url": "https://renuka-d6150.firebaseio.com",
+    "project_id": "renuka-d6150",
+    "storage_bucket": "renuka-d6150.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612059958009:android:6ceb53efb3dd85cb",
+        "android_client_info": {
+          "package_name": "me.riddhi.gada.olcademy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612059958009-dt0ue7v9r5v6n8k7akdn22vecp3oaot1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.riddhi.gada.olcademy",
+            "certificate_hash": "d4f520a9371afcbe0906e064e86c232bc86bc0e9"
+          }
+        },
+        {
+          "client_id": "612059958009-akt0720ifl8nf9pc7qakh7k1mcppmr14.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYQxDdS3PHff3RJoYzUtG3elGb_34KfdA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612059958009-akt0720ifl8nf9pc7qakh7k1mcppmr14.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
